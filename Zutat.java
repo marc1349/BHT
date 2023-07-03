@@ -43,7 +43,7 @@ public class Zutat implements Serializable {
      * @return Zutatenname
      */
     public String toString(){
-      return "[Zutat: " + zutat +" Menge: " + menge+"]";
+      return "---Zutat: " + zutat +" Menge: " + menge+"---";
   }
 
 }
