@@ -32,10 +32,10 @@ public class CocktailBar {
     /**
      * Konstruktor - erzeugt eine leere CocktailBar mit den uebergebenen
      * Cocktails.
-     */
+     *
     public CocktailBar(List<Cocktail> cocktails) {
         this.cocktails = cocktails;
-    }
+    }*/
 
     /**
      * Liest eine gespeicherte CocktailBar aus der uebergebenen Datei ein. Wird
