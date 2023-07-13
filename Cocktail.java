@@ -1,5 +1,6 @@
 package arraylist.cocktailgen;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public class Cocktail implements Serializable {
 
     // Standard ID fuer Versionskontroll in der Serialiable Klasse einfuegen  
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String cName; // Name d. Cocktails
@@ -27,6 +29,7 @@ public class Cocktail implements Serializable {
     // Konstruktor wird veraendert.
     private List<Zutat> zutaten; // Zutatenliste fuer diesen Cocktail
     private List<String> zubereitung; // Zubereitung ueber mehrere Zeilen
+    private List<String> historie; //Geschichte des Cocktails
 
     /**
      * Erzeugt ein Cocktail-Objekt und liest alle benoetigten Informationen:
@@ -43,6 +46,8 @@ public class Cocktail implements Serializable {
         // Zubereitung eingeben
         zubereitung = CocktailKonsole
                 .getInputStringList("\n  Zubereitung (zum Beenden tippen Sie '***' ein): ");
+        historie = CocktailKonsole
+                .getInputStringList("\n Die Geschichte des Drinks (zum Beenden tippen Sie '***' ein):");
         // Einkaufsliste ausgeben
         einkaufslisteOut();
     }
@@ -57,10 +62,11 @@ public class Cocktail implements Serializable {
      * @param zubereitung
      *            Liste der Zubereitungsschritte
      */
-    public Cocktail(String cName, List<Zutat> zutaten, List<String> zubereitung) {
+    public Cocktail(String cName, List<Zutat> zutaten, List<String> zubereitung, List<String> historie) {
         this.cName = cName;
         this.zutaten = zutaten;
         this.zubereitung = zubereitung;
+        this.historie = historie;
     }
 
     /**
@@ -120,6 +126,10 @@ public class Cocktail implements Serializable {
         return zubereitung;
     }
 
+    public List<String> getHistorie() {
+        return historie;
+    }
+
     /**
      * Gibt ein Cocktail-Objekt als Zeichenkette zurueck.
      * 
@@ -138,6 +148,10 @@ public class Cocktail implements Serializable {
         sb.append("Zubereitung: " + '\n');
         for (String s : zubereitung) {
             sb.append(s + '\n');
+        }
+        sb.append("Geschichte des Drinks " + '\n');
+        for (String s : historie){
+            sb.append(s +'\n');
         }
         return sb.toString();
     }
